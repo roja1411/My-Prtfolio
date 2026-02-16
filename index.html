@@ -239,7 +239,7 @@
             Contact <span>Me!</span>
         </h2>
 
-        <form class="contact-form">
+        <form class="contact-form" id="contactForm">
 
             <div class="input-row">
                 <input type="text" placeholder="Full Name" required>
@@ -361,8 +361,37 @@ document.querySelectorAll(".nav-link").forEach(link => {
 
 
 </script>
+
+    <script>
+    // Initialize EmailJS
+    emailjs.init("MGJGSyO1_Dpv42UdZ");  // <-- paste your Public Key here
+
+    const form = document.getElementById("contactForm");
+
+    form.addEventListener("submit", function(e) {
+        e.preventDefault();
+
+        const templateParams = {
+            name: form.querySelector('input[placeholder="Full Name"]').value,
+            email: form.querySelector('input[placeholder="Email Address"]').value,
+            mobile: form.querySelector('input[placeholder="Mobile Number"]').value,
+            subject: form.querySelector('input[placeholder="Email Subject"]').value,
+            message: form.querySelector('textarea').value
+        };
+
+        emailjs.send("service_5x53jys", "qb03l0f", templateParams)
+            .then(function(response) {
+                alert("Message sent successfully!");
+                form.reset();
+            }, function(error) {
+                alert("Failed to send message");
+                console.log(error);
+            });
+    });
+</script>
 </body>
 </html>
+
 
 
 
