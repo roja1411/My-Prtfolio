@@ -1077,7 +1077,7 @@ section {
     }
 }
 
-/* ================= MOBILE DROPDOWN UNDER ICON ================= */
+/* ================= RIGHT SIDE MOBILE MENU ================= */
 
 .menu-toggle {
     display: none;
@@ -1085,52 +1085,56 @@ section {
 
 @media (max-width: 768px) {
 
+    /* Make header container relative */
     .nav-container {
-        position: relative; /* important */
+        position: relative;
     }
 
-    /* Show hamburger */
+    /* Hamburger icon */
     .menu-toggle {
         display: block;
         position: absolute;
-        right: 20px;
         top: 22px;
+        right: 20px;
         font-size: 26px;
         color: #00ffff;
         cursor: pointer;
         z-index: 1001;
     }
 
-    /* Hide nav initially */
+    /* Hide default nav */
     nav {
-        position: absolute;
-        top: 60px;          /* directly below icon */
-        right: 20px;        /* align with icon */
-        width: 180px;
-        background: #0f172a;
         display: none;
-        padding: 15px 0;
-        border-radius: 10px;
-        box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-        text-align: left;
     }
 
-    nav ul {
+    /* Dropdown menu */
+    #navMenu {
+        position: absolute;
+        top: 65px;      /* below hamburger */
+        right: 20px;    /* align to right */
+        left: auto;     /* VERY IMPORTANT */
+        width: 180px;
+        background: #0f172a;
+        border-radius: 10px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        padding: 15px 0;
+        text-align: left;
+        z-index: 1000;
+    }
+
+    #navMenu ul {
         flex-direction: column;
         gap: 15px;
         padding: 0 20px;
+        align-items: flex-start;
     }
 
-    nav ul li {
-        text-align: left;
-    }
-
-    nav ul li a {
+    #navMenu ul li a {
         display: block;
         padding: 8px 0;
     }
 
-    nav.active {
+    #navMenu.active {
         display: block;
         animation: dropdown 0.25s ease;
     }
@@ -1146,6 +1150,7 @@ section {
         }
     }
 }
+
 
 
 
