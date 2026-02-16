@@ -1077,61 +1077,74 @@ section {
     }
 }
 
-/* ================= FIX: HAMBURGER ONLY MOBILE ================= */
+/* ================= MOBILE DROPDOWN UNDER ICON ================= */
 
-/* Hide hamburger on desktop */
 .menu-toggle {
-    display: none !important;
+    display: none;
 }
 
-/* Show hamburger only on mobile */
 @media (max-width: 768px) {
-    .menu-toggle {
-        display: block !important;
+
+    .nav-container {
+        position: relative; /* important */
     }
-}
 
-/* ===== MOBILE NAV RIGHT SIDE DROPDOWN ===== */
-@media (max-width: 768px) {
-
+    /* Show hamburger */
     .menu-toggle {
         display: block;
         position: absolute;
         right: 20px;
-        top: 25px;
+        top: 22px;
         font-size: 26px;
         color: #00ffff;
         cursor: pointer;
         z-index: 1001;
     }
 
+    /* Hide nav initially */
     nav {
         position: absolute;
-        top: 70px;
-        right: 0;
-        width: 200px;   /* smaller width */
+        top: 60px;          /* directly below icon */
+        right: 20px;        /* align with icon */
+        width: 180px;
         background: #0f172a;
         display: none;
-        padding: 20px;
-        text-align: right;   /* RIGHT ALIGN TEXT */
-        border-radius: 0 0 0 15px;
-        box-shadow: -5px 10px 25px rgba(0,0,0,0.4);
+        padding: 15px 0;
+        border-radius: 10px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        text-align: left;
     }
 
     nav ul {
         flex-direction: column;
-        gap: 20px;
-        align-items: flex-end;   /* push items to right */
+        gap: 15px;
+        padding: 0 20px;
+    }
+
+    nav ul li {
+        text-align: left;
+    }
+
+    nav ul li a {
+        display: block;
+        padding: 8px 0;
     }
 
     nav.active {
         display: block;
-        animation: slideRight 0.3s ease forwards;
+        animation: dropdown 0.25s ease;
     }
 
-    @keyframes slideRight {
-        from { transform: translateX(50px); opacity: 0; }
-        to { transform: translateX(0); opacity: 1; }
+    @keyframes dropdown {
+        from {
+            opacity: 0;
+            transform: translateY(-10px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
     }
 }
+
 
