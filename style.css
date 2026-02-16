@@ -1091,6 +1091,56 @@ section {
     }
 }
 
+/* ================= MOBILE NAVIGATION FINAL ================= */
+
+/* Hide hamburger on desktop */
+.menu-toggle {
+    display: none;
+}
+
+/* Mobile only */
+@media (max-width: 768px) {
+
+    /* Show hamburger */
+    .menu-toggle {
+        display: block;
+        position: absolute;
+        right: 20px;
+        top: 22px;
+        font-size: 26px;
+        cursor: pointer;
+        z-index: 1001;
+    }
+
+    /* Hide normal nav */
+    nav {
+        position: absolute;
+        top: 70px;
+        right: 0;
+        width: 100%;
+        background: #0f172a;
+        display: none;
+        text-align: center;
+        padding: 25px 0;
+        z-index: 1000;
+    }
+
+    nav ul {
+        flex-direction: column;
+        gap: 25px;
+    }
+
+    nav.active {
+        display: block;
+        animation: slideDown 0.3s ease forwards;
+    }
+
+    @keyframes slideDown {
+        from { opacity: 0; transform: translateY(-10px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+}
+
 
 
 
